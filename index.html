@@ -201,6 +201,44 @@ footer{border-top:1px solid var(--line);padding:40px 0;display:flex;justify-cont
 .hint{position:absolute;z-index:4;left:50%;bottom:34px;transform:translateX(-50%);animation:hint 2s ease-in-out infinite}
 @keyframes hint{50%{transform:translate(-50%,8px);opacity:.4}}
 @media(max-width:900px){.ov .sub{flex-direction:column;align-items:flex-start}}
+
+/* ---------- scroll normal con elementos animados ---------- */
+.hero2{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;align-items:flex-end}
+.hero2 video,.fall video{position:absolute;left:0;top:-12%;width:100%;height:124%;object-fit:cover;will-change:transform}
+.shade{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 80% at 60% 35%,transparent 0,rgba(9,9,10,.4) 60%,var(--bg) 100%),linear-gradient(180deg,rgba(9,9,10,.5),transparent 30%,transparent 55%,var(--bg))}
+.hero2 .rec{position:absolute;z-index:3;top:90px;right:40px}
+.hin{position:relative;z-index:2;width:100%;padding-bottom:10vh}
+.ld{opacity:0;transform:translateY(24px);animation:ld 1.4s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d,0s)}
+@keyframes ld{to{opacity:1;transform:none}}
+.split .ch{display:inline-block;opacity:0;transform:translateY(.55em);filter:blur(10px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1),filter .9s;transition-delay:calc(var(--i)*22ms + var(--d,0s))}
+.split.in .ch,.hero2 .split .ch.go{opacity:1;transform:none;filter:none}
+[data-rv]:not(.split):not(.wipe){opacity:0;transform:translateY(30px);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
+[data-rv].in:not(.split):not(.wipe){opacity:1;transform:none}
+.wipe{clip-path:inset(100% 0 0 0);transition:clip-path 1.4s cubic-bezier(.77,0,.18,1)}
+.wipe.in{clip-path:inset(0 0 0 0)}
+.wipe img,.wipe video{transform:scale(1.25);transition:transform 2s cubic-bezier(.16,1,.3,1)}
+.wipe.in img{transform:scale(1.08)}
+.rule{padding:170px 0}
+.rgrid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+.rtext h2{font:700 clamp(58px,7vw,128px)/.9 CN;text-transform:uppercase;margin:6px 0}
+.rtext h2.y{color:var(--y)}
+.rtext .say{margin:18px 0 26px}
+.rmedia{position:relative;aspect-ratio:16/11;overflow:hidden}
+.rmedia video{width:100%;height:115%;object-fit:cover}
+.rmedia .tag{position:absolute;left:18px;top:16px;color:#fff}
+.rmedia .tag b,.hero2 .rec b{display:inline-block;width:8px;height:8px;border-radius:50%;background:#d6342c;margin-right:8px;animation:bl 1.2s infinite}
+.fall{position:relative;height:110vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.fall .huge{font:700 clamp(70px,11vw,210px)/.88 CN;text-transform:uppercase}
+.pgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;margin-top:70px}
+.pcard{position:relative;overflow:hidden;margin:0;will-change:transform}
+.pcard img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;display:block}
+.pcard figcaption{position:absolute;left:16px;bottom:14px;color:#fff;text-shadow:0 1px 10px #000}
+.pcard:nth-child(1){grid-column:1/8}.pcard:nth-child(2){grid-column:8/13;margin-top:120px}
+.pcard:nth-child(3){grid-column:2/6}.pcard:nth-child(4){grid-column:6/13;margin-top:60px}
+.pcard:nth-child(5){grid-column:1/7;margin-top:-40px}.pcard:nth-child(6){grid-column:7/12;margin-top:80px}
+.pcard:nth-child(7){grid-column:3/9}.pcard:nth-child(8){grid-column:9/13;margin-top:140px}
+@media(max-width:900px){.rgrid{grid-template-columns:1fr}.pcard{grid-column:1/13!important;margin-top:0!important}}
+.split .w{display:inline-block;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -209,22 +247,18 @@ footer{border-top:1px solid var(--line);padding:40px 0;display:flex;justify-cont
 <audio id="hum" src="v/hum.mp3" loop preload="auto"></audio>
 <nav><div class="logo">DREAMS STUDIO</div><div class="links"><a href="#juego">Juego</a><a href="#trailer">Tráiler</a><a href="#galeria">Galería</a><a href="#estudio">Estudio</a><a href="#descarga">Descargar</a></div></nav>
 
-<section class="seq" id="seqA" data-src="v/seq_a.mp4" data-n="135" style="height:620vh">
-  <div class="stage">
-    <canvas></canvas><div class="lb t"></div><div class="lb b"></div>
-    <div class="rec mono"><b></b>CAM 01 · NIVEL 0 · <span class="tc">00:00:00</span></div>
-    <div class="ov" data-a=".02" data-b=".16"><div class="mono kick">Dreams Studio presenta</div></div>
-    <div class="ov" data-a=".18" data-b=".36"><p class="say split">Despiertas en un pasillo que no reconoces.</p></div>
-    <div class="ov" data-a=".38" data-b=".56"><p class="say split">Moqueta amarilla. Fluorescentes. El mismo cartel.</p></div>
-    <div class="ov" data-a=".58" data-b=".74"><p class="say split">Una y otra vez.</p></div>
-    <div class="ov title" data-a=".78" data-b="1.01">
-      <h1 class="split big8">LIMINAL<em>8</em></h1>
-      <div class="sub"><p>Si algo ha cambiado, da la vuelta. Si no, sigue adelante.</p>
-        <div class="cta"><a class="btn" href="#trailer">Ver tráiler</a><a class="btn y" href="#descarga">Descargar gratis</a></div></div>
-    </div>
-    <div class="hint mono">Desliza</div>
+<header class="hero2" id="top">
+  <video src="v/seq_a.mp4" autoplay muted loop playsinline data-speed="-.25"></video>
+  <div class="shade"></div>
+  <div class="rec mono"><b></b>CAM 01 · NIVEL 0</div>
+  <div class="wrap hin">
+    <div class="mono kick ld" style="--d:.2s">Dreams Studio presenta</div>
+    <h1 class="big8 split ld">LIMINAL<em>8</em></h1>
+    <div class="sub ld" style="--d:1.1s"><p>Despiertas en un pasillo que no reconoces. Si algo ha cambiado, da la vuelta. Si no, sigue adelante.</p>
+      <div class="cta"><a class="btn" href="#trailer">Ver tráiler</a><a class="btn y" href="#descarga">Descargar gratis</a></div></div>
   </div>
-</section>
+  <div class="hint mono">Desliza</div>
+</header>
 
 <div class="mq"><div>
 <span>Backrooms</span><i>✦</i><span>Poolrooms</span><i>✦</i><span>40+ anomalías</span><i>✦</i><span>Hasta 4 jugadores</span><i>✦</i><span>Chat de voz por proximidad</span><i>✦</i><span>Encadenados</span><i>✦</i>
@@ -249,15 +283,17 @@ footer{border-top:1px solid var(--line);padding:40px 0;display:flex;justify-cont
   </div>
 </section>
 
-<section class="seq" id="seqB" data-src="v/seq_b.mp4" data-n="135" style="height:520vh">
-  <div class="stage">
-    <canvas></canvas><div class="lb t"></div><div class="lb b"></div>
-    <div class="rec mono"><b></b>CAM 02 · POOLROOMS · <span class="tc">00:00:00</span></div>
-    <div class="ov left" data-a=".0" data-b=".2"><div class="mono kick">02 — La regla</div><h2 class="split">Observa.</h2></div>
-    <div class="ov left" data-a=".22" data-b=".44"><h2 class="split">No le quites<br>la vista de encima.</h2></div>
-    <div class="ov left" data-a=".5" data-b=".62"><p class="say split">…</p></div>
-    <div class="ov left" data-a=".66" data-b=".84"><h2 class="split">Antes no<br>estaba ahí.</h2></div>
-    <div class="ov left" data-a=".86" data-b="1.01"><div class="mono kick">Si algo ha cambiado</div><h2 class="split y">Da la vuelta.</h2></div>
+<section class="rule" id="regla">
+  <div class="wrap rgrid">
+    <div class="rtext">
+      <div class="mono kick" data-rv>02 — La regla</div>
+      <h2 class="split" data-rv>Observa.</h2>
+      <p class="say split" data-rv>No le quites la vista de encima.</p>
+      <h2 class="split" data-rv>Antes no<br>estaba ahí.</h2>
+      <h2 class="split y" data-rv>Da la vuelta.</h2>
+      <p class="lead" data-rv style="margin-top:30px">Cada vuelta al pasillo puede esconder una anomalía: una luz, un cartel, una silla… o algo que se mueve cuando no miras. Acierta ocho veces seguidas para salir.</p>
+    </div>
+    <div class="rmedia wipe" data-rv><video src="v/seq_b.mp4" autoplay muted loop playsinline data-speed=".12"></video><div class="tag mono"><b></b>CAM 02 · POOLROOMS</div></div>
   </div>
 </section>
 
@@ -275,11 +311,11 @@ footer{border-top:1px solid var(--line);padding:40px 0;display:flex;justify-cont
   </div>
 </section>
 
-<section class="hz" id="galeria" style="padding:0">
-  <div class="stage">
-    <div class="head"><div><div class="mono" style="margin-bottom:18px">04 — Capturas reales</div><h2>Dentro<br>del juego</h2></div><div class="mono" id="hzc">01 / 08</div></div>
-    <div class="track" id="track"><div class="card"><img src="img/s07.jpg" alt="Poolrooms"><div class="cap"><span class="mono">01</span><b>Poolrooms</b></div></div><div class="card"><img src="img/f02.jpg" alt="El maniquí"><div class="cap"><span class="mono">02</span><b>El maniquí</b></div></div><div class="card"><img src="img/a02.jpg" alt="Niebla"><div class="cap"><span class="mono">03</span><b>Niebla</b></div></div><div class="card"><img src="img/s04.jpg" alt="Luz de emergencia"><div class="cap"><span class="mono">04</span><b>Luz de emergencia</b></div></div><div class="card"><img src="img/a03.jpg" alt="Agua negra"><div class="cap"><span class="mono">05</span><b>Agua negra</b></div></div><div class="card"><img src="img/a11.jpg" alt="Multijugador"><div class="cap"><span class="mono">06</span><b>Multijugador</b></div></div><div class="card"><img src="img/a09.jpg" alt="El hueco"><div class="cap"><span class="mono">07</span><b>El hueco</b></div></div><div class="card"><img src="img/s09.jpg" alt="Sala vacía"><div class="cap"><span class="mono">08</span><b>Sala vacía</b></div></div></div>
-    <div class="prog"><i id="hzp"></i></div>
+<section id="galeria">
+  <div class="wrap">
+    <div class="lbl mono" data-rv>04 — Capturas reales</div>
+    <h2 class="split" data-rv>Dentro del juego</h2>
+    <div class="pgrid"><figure class="pcard wipe" data-rv data-speed="0.0"><img src="img/s07.jpg" alt="Poolrooms"><figcaption class="mono">01 — Poolrooms</figcaption></figure><figure class="pcard wipe" data-rv data-speed="0.072"><img src="img/f02.jpg" alt="El maniquí"><figcaption class="mono">02 — El maniquí</figcaption></figure><figure class="pcard wipe" data-rv data-speed="-0.04"><img src="img/a02.jpg" alt="Niebla"><figcaption class="mono">03 — Niebla</figcaption></figure><figure class="pcard wipe" data-rv data-speed="0.048"><img src="img/s04.jpg" alt="Luz de emergencia"><figcaption class="mono">04 — Luz de emergencia</figcaption></figure><figure class="pcard wipe" data-rv data-speed="-0.024"><img src="img/a03.jpg" alt="Agua negra"><figcaption class="mono">05 — Agua negra</figcaption></figure><figure class="pcard wipe" data-rv data-speed="0.08"><img src="img/a11.jpg" alt="Multijugador"><figcaption class="mono">06 — Multijugador</figcaption></figure><figure class="pcard wipe" data-rv data-speed="0.016"><img src="img/a09.jpg" alt="El hueco"><figcaption class="mono">07 — El hueco</figcaption></figure><figure class="pcard wipe" data-rv data-speed="-0.056"><img src="img/s09.jpg" alt="Sala vacía"><figcaption class="mono">08 — Sala vacía</figcaption></figure></div>
   </div>
 </section>
 <section style="padding:120px 0">
@@ -301,14 +337,15 @@ footer{border-top:1px solid var(--line);padding:40px 0;display:flex;justify-cont
   </div>
 </section>
 
-<section class="seq" id="seqC" data-src="v/seq_c.mp4" data-n="150" data-fade="1" style="height:420vh">
-  <div class="stage">
-    <canvas></canvas><div class="lb t"></div><div class="lb b"></div>
-    <div class="ov" data-a=".0" data-b=".3"><p class="say split">Ocho aciertos seguidos.</p></div>
-    <div class="ov" data-a=".35" data-b=".62"><p class="say split">Un solo error y vuelves a empezar.</p></div>
-    <div class="ov" data-a=".7" data-b="1.01"><h2 class="split huge">¿Encontrarás<br>la salida?</h2></div>
+<section class="fall" id="caida">
+  <video src="v/seq_c.mp4" autoplay muted loop playsinline data-speed="-.2"></video>
+  <div class="shade"></div>
+  <div class="wrap" style="position:relative;z-index:2;text-align:center">
+    <p class="say split" data-rv>Ocho aciertos seguidos. Un solo error y vuelves a empezar.</p>
+    <h2 class="split huge" data-rv style="margin-top:26px">¿Encontrarás<br>la salida?</h2>
   </div>
 </section>
+
 <section id="descarga">
   <div class="glow g1" style="left:auto;right:-150px;top:120px"></div>
   <div class="wrap dl">
@@ -345,64 +382,20 @@ tv.addEventListener('click', () => { if (!tv.classList.contains('on')) { tv.clas
 addEventListener('pointermove', e => document.querySelectorAll('.glow').forEach(g => g.style.translate = `${(e.clientX / innerWidth - .5) * 60}px ${(e.clientY / innerHeight - .5) * 40}px`));
 
 
-// ---------- secuencias de fotogramas reales del juego, controladas por el scroll ----------
-const SEQ=[...document.querySelectorAll('.seq')].map(sec=>{
-  const n=+sec.dataset.n,dir=sec.dataset.dir,cv=sec.querySelector('canvas'),cx=cv.getContext('2d');
-  const vid=document.createElement('video');vid.src=sec.dataset.src;vid.muted=true;vid.playsInline=true;vid.preload='auto';vid.load();
-  const ovs=[...sec.querySelectorAll('.ov')].map(o=>({el:o,a:+o.dataset.a,b:+o.dataset.b,chars:[...o.querySelectorAll('.ch')]}));
-  return {sec,n,cv,cx,vid,ovs,fade:!!sec.dataset.fade,lt:sec.querySelector('.lb.t'),lb:sec.querySelector('.lb.b'),tc:sec.querySelector('.tc'),cur:0,drawn:-1};
-});
-// letras sueltas para animarlas
-document.querySelectorAll('.split').forEach(el=>{
-  const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();[...c.textContent].forEach(ch=>{const sp=document.createElement('span');sp.className='ch';sp.textContent=ch===' '?'\u00a0':ch;f.appendChild(sp)});c.replaceWith(f)}else if(c.nodeName!=='BR')walk(c)})};walk(el)});
-SEQ.forEach(q=>q.ovs.forEach(o=>o.chars=[...o.el.querySelectorAll('.ch')]));
-function size(q){const d=Math.min(2,devicePixelRatio||1);q.cv.width=innerWidth*d;q.cv.height=innerHeight*d;q.drawn=-1}
-function draw(q,t,dark){
-  const v=q.vid;if(v.readyState<2)return;
-  if(Math.abs(v.currentTime-t)>0.02&&!v.seeking)v.currentTime=t;
-  const W=q.cv.width,H=q.cv.height,s=Math.max(W/v.videoWidth,H/v.videoHeight)*1.04,w=v.videoWidth*s,h=v.videoHeight*s;
-  q.cx.drawImage(v,(W-w)/2,(H-h)/2,w,h);
-  if(dark>0){q.cx.fillStyle=`rgba(0,0,0,${dark})`;q.cx.fillRect(0,0,W,H)}
-}
-const ease=x=>1-Math.pow(1-x,3);
-function scene(){
-  const vh=innerHeight;
-  SEQ.forEach(q=>{
-    const r=q.sec.getBoundingClientRect();if(r.bottom<-vh||r.top>vh*1.5)return;
-    const u=Math.min(1,Math.max(0,-r.top/(r.height-vh)));
-    q.cur+=(u-q.cur)*.12;                                   // inercia suave, sin saltos
-    const dark=q.fade?Math.max(0,(q.cur-.8)/.2):0;
-    if(q.vid.duration)draw(q,q.cur*(q.vid.duration-0.04),dark);
-    // bandas de cine que entran al principio y salen al final
-    const bar=Math.min(1,q.cur*8,(1-q.cur)*8+.4)*11;q.lt.style.height=q.lb.style.height=bar+'vh';
-    if(q.tc){const t=q.cur*9;q.tc.textContent='00:00:'+String(Math.floor(t)).padStart(2,'0')+':'+String(Math.floor(t%1*30)).padStart(2,'0')}
-    q.ovs.forEach(o=>{
-      const p=(q.cur-o.a)/(o.b-o.a);const on=p>0&&p<1;o.el.style.opacity=on?1:0;if(!on)return;
-      const inP=Math.min(1,p/.35),outP=Math.max(0,(p-.78)/.22),N=o.chars.length||1;
-      o.chars.forEach((c,i)=>{const d=i/N*.55;const a=ease(Math.min(1,Math.max(0,(inP-d)/.45)));const z=ease(outP);
-        c.style.opacity=a*(1-z);c.style.transform=`translateY(${(1-a)*0.5}em) scale(${1+z*.08})`;c.style.filter=`blur(${(1-a)*12+z*10}px)`});
-      if(!o.chars.length){o.el.style.opacity=Math.min(inP,1-outP)}
-    });
-  });
-  requestAnimationFrame(scene);
-}
-addEventListener('resize',()=>SEQ.forEach(size));SEQ.forEach(size);
-// carga: espera a los primeros fotogramas
-(()=>{const v=SEQ[0].vid,pct=document.getElementById('pct');let k=0;const t=setInterval(()=>{k=Math.min(99,k+3);const b=v.buffered.length?v.buffered.end(0)/(v.duration||1):0;pct.textContent='Cargando · '+String(Math.max(k,Math.round(b*100))).padStart(3,'0');if(v.readyState>=3&&(b>.6||k>=99)){clearInterval(t);pct.textContent='Cargando · 100';document.getElementById('pre').classList.add('done')}},60)})();
-requestAnimationFrame(scene);
-
+// ---------- letras, apariciones y parallax con scroll normal ----------
+document.querySelectorAll('.split').forEach(el=>{let i=0;
+  const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(wd=>{if(!wd)return;if(/^\s+$/.test(wd)){f.appendChild(document.createTextNode(' '));return}const w=document.createElement('span');w.className='w';[...wd].forEach(ch=>{const sp=document.createElement('span');sp.className='ch';sp.style.setProperty('--i',i++);sp.textContent=ch;w.appendChild(sp)});f.appendChild(w)});c.replaceWith(f)}else if(c.nodeName!=='BR')walk(c)})};walk(el)});
+let RV=[...document.querySelectorAll('[data-rv]')];
+function rv(){const vh=innerHeight;RV=RV.filter(el=>{const r=el.getBoundingClientRect();if(r.top<vh*.88&&r.bottom>0){el.classList.add('in');return false}return true})}
+const PAR=[...document.querySelectorAll('[data-speed]')];
+function par(){const vh=innerHeight;PAR.forEach(el=>{const r=(el.closest('header,section,figure')||el).getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)return;
+  const c=(r.top+r.height/2-vh/2);el.style.transform=`translate3d(0,${c*+el.dataset.speed}px,0)`});rv();requestAnimationFrame(par)}
+requestAnimationFrame(par);
+addEventListener('load',()=>{document.getElementById('pre').classList.add('done');setTimeout(()=>document.querySelectorAll('.hero2 .split .ch').forEach(c=>c.classList.add('go')),300)});
+setTimeout(()=>document.getElementById('pre').classList.add('done'),2500);
 // sonido real del juego (zumbido de los fluorescentes)
 const snd=document.getElementById('snd'),hum=document.getElementById('hum');hum.volume=.35;
 snd.addEventListener('click',()=>{if(hum.paused){hum.play().catch(()=>{});snd.classList.add('on')}else{hum.pause();snd.classList.remove('on')}});
-// galería horizontal
-const hz=document.querySelector('.hz'),track=document.getElementById('track'),hzp=document.getElementById('hzp'),hzc=document.getElementById('hzc');
-function onScroll(){
-  const vh=innerHeight,h=hz.getBoundingClientRect(),v=Math.min(1,Math.max(0,-h.top/(h.height-vh)));
-  const max=track.scrollWidth-innerWidth;track.style.transform=`translateX(${-v*max}px)`;hzp.style.width=(v*100)+'%';
-  hzc.textContent=String(Math.min(8,Math.floor(v*8)+1)).padStart(2,'0')+' / 08';
-  track.querySelectorAll('img').forEach(im=>{const cr=im.parentNode.getBoundingClientRect();im.style.transform=`scale(1.15) translateX(${(cr.left+cr.width/2-innerWidth/2)*-.06}px)`});
-}
-addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
 // contadores
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);e.target.querySelectorAll('[data-n]').forEach(b=>{const n=+b.dataset.n;let t0=null;const f=t=>{t0=t0||t;const q=Math.min(1,(t-t0)/1400);b.textContent=Math.round(n*(1-Math.pow(1-q,3)))+(n===40&&q===1?'+':'');if(q<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}),{threshold:.4});
 document.querySelectorAll('.stats').forEach(e=>cio.observe(e));
