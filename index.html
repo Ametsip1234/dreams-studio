@@ -239,6 +239,20 @@ footer{border-top:1px solid var(--line);padding:40px 0;display:flex;justify-cont
 .pcard:nth-child(7){grid-column:3/9}.pcard:nth-child(8){grid-column:9/13;margin-top:140px}
 @media(max-width:900px){.rgrid{grid-template-columns:1fr}.pcard{grid-column:1/13!important;margin-top:0!important}}
 .split .w{display:inline-block;white-space:nowrap}
+
+.suit{padding:150px 0;overflow:hidden}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.turn{position:relative;aspect-ratio:4/5;background:#050505;cursor:grab;touch-action:pan-y}
+.turn:active{cursor:grabbing}
+.turn canvas{width:100%;height:100%;display:block}
+.turn .drag{position:absolute;left:18px;bottom:16px;color:#bdb7ab}
+.turn .deg{position:absolute;right:18px;top:16px;color:var(--y)}
+.stxt h2{font:700 clamp(54px,6vw,110px)/.9 CN;text-transform:uppercase;margin-bottom:26px}
+.feat{list-style:none;margin-top:44px;border-top:1px solid var(--line)}
+.feat li{display:flex;gap:26px;padding:22px 0;border-bottom:1px solid var(--line);font:500 21px D}
+.feat b{font:700 22px CN;color:var(--y);min-width:34px}
+.feat i{font-style:normal;display:block;margin-top:6px}
+@media(max-width:900px){.sgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -297,6 +311,26 @@ footer{border-top:1px solid var(--line);padding:40px 0;display:flex;justify-cont
   </div>
 </section>
 
+<section class="suit" id="traje">
+  <div class="glow g2" style="left:-200px;right:auto;top:10%"></div>
+  <div class="wrap sgrid">
+    <div class="turn wipe" data-rv>
+      <canvas id="turn"></canvas>
+      <div class="mono drag">Arrastra para girar ⟲</div>
+      <div class="deg mono" id="deg">000°</div>
+    </div>
+    <div class="stxt">
+      <div class="mono kick" data-rv>03 — Multijugador</div>
+      <h2 class="split" data-rv>No estás<br>solo ahí dentro.</h2>
+      <p class="lead" data-rv>Hasta cuatro jugadores con trajes de protección, encadenados entre sí. Si uno se aleja, la cadena tira de los demás. Habláis por voz de proximidad: cuanto más lejos, menos os oís.</p>
+      <ul class="feat">
+        <li data-rv><b>01</b><span>Online con Steam<br><i class="mono">Invita a tus amigos o entra con un código</i></span></li>
+        <li data-rv><b>02</b><span>Encadenados<br><i class="mono">Física real: la cadena se tensa y arrastra</i></span></li>
+        <li data-rv><b>03</b><span>Voz por proximidad<br><i class="mono">Eco en los pasillos, voz apagada tras las paredes</i></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 <section id="trailer">
   <div class="glow g2"></div><div class="streak"></div>
   <div class="wrap">
@@ -393,6 +427,25 @@ function par(){const vh=innerHeight;PAR.forEach(el=>{const r=(el.closest('header
 requestAnimationFrame(par);
 addEventListener('load',()=>{document.getElementById('pre').classList.add('done');setTimeout(()=>document.querySelectorAll('.hero2 .split .ch').forEach(c=>c.classList.add('go')),300)});
 setTimeout(()=>document.getElementById('pre').classList.add('done'),2500);
+
+// ---------- traje en 3D (render real de Blender, 72 ángulos): gira con el scroll y arrastrando ----------
+(()=>{const cv=document.getElementById('turn');if(!cv)return;const cx=cv.getContext('2d'),sp=new Image();sp.src='img/hz_sprite.jpg';
+  const N=72,COLS=12,FW=540,FH=675;let ang=0,vel=0,drag=false,lx=0,last=-1;
+  function size(){const r=cv.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);cv.width=r.width*d;cv.height=r.height*d;last=-1}
+  addEventListener('resize',size);size();
+  cv.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;vel=dx*.6;ang+=vel});
+  cv.addEventListener('pointerup',()=>drag=false);
+  let lastY=scrollY;
+  (function loop(){const dy=scrollY-lastY;lastY=scrollY;
+    const r=cv.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){ang+=dy*.35}
+    if(!drag){vel*=.94;ang+=vel+.15}
+    const k=((Math.round(ang/5)%N)+N)%N;
+    if(k!==last&&sp.complete&&sp.naturalWidth){last=k;const sx=(k%COLS)*FW,sy=Math.floor(k/COLS)*FH;cx.drawImage(sp,sx,sy,FW,FH,0,0,cv.width,cv.height);
+      document.getElementById('deg').textContent=String(k*5).padStart(3,'0')+'°'}
+    requestAnimationFrame(loop)})();
+})();
+
 // sonido real del juego (zumbido de los fluorescentes)
 const snd=document.getElementById('snd'),hum=document.getElementById('hum');hum.volume=.35;
 snd.addEventListener('click',()=>{if(hum.paused){hum.play().catch(()=>{});snd.classList.add('on')}else{hum.pause();snd.classList.remove('on')}});
