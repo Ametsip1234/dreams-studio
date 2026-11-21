@@ -392,6 +392,65 @@ section{position:relative;isolation:isolate;overflow-x:clip}
 .req th{font:500 12px/1.8 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;width:40%;padding-right:16px}
 .req td{font:900 1.12rem/1.35 var(--f-disp);letter-spacing:-.02em}
 
+/* ------- cómo abrirlo (ilustraciones de Windows 11) ------- */
+.howto-link{display:inline-flex;gap:8px;margin-top:18px;font:900 1.05rem/1 var(--f-disp);letter-spacing:-.02em;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.install{padding-block:var(--sec)}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px;margin-top:clamp(40px,5vw,72px)}
+.hw{display:flex;flex-direction:column;border-radius:16px;background:#ecebe5;overflow:hidden}
+.scr{position:relative;aspect-ratio:4/3;background:linear-gradient(160deg,#7cc2f0,#2f7fc0);padding:16px;overflow:hidden}
+.win{height:100%;display:flex;flex-direction:column;border-radius:8px;background:#fbfbfb;color:#1b1b1b;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);overflow:hidden;font:400 10.5px/1.25 "Segoe UI",var(--f-disp)}
+.win .bar{display:flex;align-items:center;gap:6px;padding:7px 9px;background:#eef0f3;border-bottom:1px solid #e1e3e6}
+.win .bar>i{width:9px;height:9px;border-radius:2px;background:#cfd3d8;margin-left:auto}
+.win .bar>i+i{margin-left:0}
+.win .ttl{display:flex;align-items:center;gap:6px;font-weight:600}
+.browser .bar>i{margin-left:0;border-radius:50%;background:#d4d7db}
+.url{flex:1;margin-left:6px;padding:3px 8px;border-radius:10px;background:#fff;color:#555;font-size:9.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win .body{flex:1;position:relative;min-height:0}
+.body.center{display:grid;place-items:center;background:#0b0b0c}
+.fake-btn{padding:9px 14px;border-radius:6px;background:var(--sun);color:var(--ink);font:900 12px/1 var(--f-disp)}
+.dlpop{position:absolute;right:8px;top:8px;width:58%;padding:8px;border-radius:7px;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.35);display:grid;gap:3px;animation:pop 4s var(--ease) infinite}
+.dlpop span{display:flex;align-items:center;gap:6px;font-weight:600}
+.dlpop em{font-style:normal;color:#2e7d32;font-size:9.5px}
+@keyframes pop{0%,30%{opacity:0;transform:translateY(-6px)}40%,92%{opacity:1;transform:none}100%{opacity:0}}
+.body.ex{display:flex}
+.side{width:34%;padding:8px 6px;border-right:1px solid #eceef0;display:grid;align-content:start;gap:3px}
+.side li{padding:4px 6px;border-radius:4px;color:#444}
+.side li.on{background:#e3eefb;color:#0b4f9c;font-weight:600}
+.files{flex:1;padding:8px;display:grid;align-content:start;gap:3px}
+.files li{display:flex;align-items:center;gap:7px;padding:5px 7px;border-radius:4px;white-space:nowrap}
+.files li em{margin-left:auto;font-style:normal;color:#888;font-size:9px}
+.files li.sel{background:#cce4f7;outline:1px solid #99c9ef}
+.files img{width:16px;height:16px;border-radius:3px}
+.tools{display:flex;gap:4px;padding:6px 8px;border-bottom:1px solid #eceef0}
+.tools span{padding:4px 7px;border-radius:4px;color:#444}
+.hl{background:var(--sun)!important;color:var(--ink)!important;font-weight:700;box-shadow:0 0 0 2px rgba(11,11,12,.85)}
+.dlg{margin:2% 0}
+.dlg .body{padding:10px;display:grid;align-content:start;grid-auto-rows:max-content;gap:7px}
+.dlg .dt{color:#444}
+.path{flex:none;line-height:1.3;padding:4px 7px;border:1px solid #c9ccd0;border-radius:4px;font-size:9.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chk{display:flex;align-items:center;gap:6px;color:#444}
+.chk i{width:11px;height:11px;border-radius:3px;background:#0b5cad}
+.dlg-b{display:flex;justify-content:flex-end;gap:6px;margin-top:4px}
+.dlg-b span{padding:5px 12px;border-radius:4px;border:1px solid #c9ccd0}
+.ico{flex:none;display:inline-block;width:16px;height:13px;border-radius:2px;position:relative}
+.ico.fold{background:#f6c443;box-shadow:inset 0 3px 0 #e0a92a}
+.ico.zip{background:#f6c443;box-shadow:inset 0 3px 0 #e0a92a}
+.ico.zip::after{content:"";position:absolute;left:7px;top:1px;bottom:1px;width:2px;background:repeating-linear-gradient(#555 0 2px,transparent 2px 4px)}
+.ico.dll{width:12px;height:15px;background:#e8eaed;border:1px solid #b9bdc2}
+.cursor{position:absolute;z-index:3;width:24px;height:24px;margin:-2px 0 0 -3px;animation:cur 2.6s var(--ease) infinite;pointer-events:none}
+.cursor svg{width:24px;height:24px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.4))}
+.click{position:absolute;left:-12px;top:-12px;width:28px;height:28px;border-radius:50%;border:3px solid var(--sun);opacity:0;animation:clk 2.6s var(--ease) infinite}
+.x2{position:absolute;left:22px;top:16px;padding:2px 5px;border-radius:4px;background:var(--ink);color:var(--sun);font:900 11px/1 var(--f-disp)}
+@keyframes cur{0%{transform:translate(26px,30px)}35%,100%{transform:none}}
+@keyframes clk{0%,38%{opacity:0;transform:scale(.3)}45%{opacity:1}70%,100%{opacity:0;transform:scale(1.6)}}
+.hw-t{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;padding:18px 18px 22px;align-items:start}
+.hw-n{grid-row:span 2;width:40px;height:40px;display:grid;place-items:center;border-radius:6px;background:var(--sun);color:var(--ink);font:900 26px/1 var(--f-disp)}
+.hw-t h3{font:900 1.2rem/1.1 var(--f-disp);letter-spacing:-.025em}
+.hw-t p{font:500 .95rem/1.4 var(--f-disp);color:var(--on-lt-2)}
+.how-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;margin-top:14px}
+.how-notes p{padding:18px 20px;border-radius:14px;background:var(--ink);color:var(--on-ink-2);font:500 .98rem/1.45 var(--f-disp)}
+.how-notes b{color:var(--sun);font-weight:900}
+
 /* ------- pie ------- */
 .foot{padding-top:clamp(56px,7vw,96px);padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
 .foot-big-box{overflow:hidden}
@@ -466,6 +525,7 @@ section{position:relative;isolation:isolate;overflow-x:clip}
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cur" viewBox="0 0 24 24"><path d="M3 2l15 10.5-6.6 1.3 3.9 7.4-3 1.5-3.9-7.4L3 20z" fill="#fff" stroke="#0b0b0c" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <filter id="ripple" x="-5%" y="-20%" width="110%" height="140%">
     <feTurbulence type="fractalNoise" baseFrequency=".006 .07" numOctaves="2" seed="8" result="n">
       <animate attributeName="baseFrequency" dur="9s" values=".006 .07;.008 .09;.006 .07" repeatCount="indefinite"/>
@@ -744,23 +804,78 @@ section{position:relative;isolation:isolate;overflow-x:clip}
           <h2 class="d1 split" id="dl-t">Liminal 8</h2>
         </div>
         <p class="lead rv">Gratis para PC. Juega solo o con hasta tres amigos más.</p>
-        <a class="btn btn-ink btn-xl rv" href="https://github.com/Ametsip1234/dreams-studio/releases/latest/download/Liminal8.zip"><span>Descargar gratis <span class="dl-ar" aria-hidden="true">↓</span></span><small>.zip · 493 MB</small></a>
-        <ol class="steps rv">
-          <li>Descarga el zip.</li>
-          <li>Descomprímelo en una carpeta.</li>
-          <li>Abre Liminal 8.exe. Para jugar online, abre Steam antes.</li>
-        </ol>
+        <a class="btn btn-ink btn-xl rv" href="https://github.com/Ametsip1234/dreams-studio/releases/latest/download/Liminal8.zip"><span>Descargar gratis <span class="dl-ar" aria-hidden="true">↓</span></span><small>.zip · ≈ 270 MB</small></a>
+        <a class="howto-link rv" href="#instalar">¿Cómo se abre? Mira los pasos <span aria-hidden="true">↓</span></a>
       </div>
       <table class="req rv" style="--d:120ms">
         <caption>Requisitos</caption>
         <tbody>
           <tr><th scope="row">Sistema</th><td>Windows 10 / 11 de 64 bits</td></tr>
-          <tr><th scope="row">Descarga</th><td>493 MB (.zip)</td></tr>
+          <tr><th scope="row">Descarga</th><td>≈ 270 MB (.zip)</td></tr>
           <tr><th scope="row">Gráficos</th><td>DirectX 11</td></tr>
           <tr><th scope="row">Online</th><td>Steam, hasta 4 jugadores</td></tr>
           <tr><th scope="row">Idiomas</th><td>Español e inglés</td></tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</section>
+<!-- Instalar: paso a paso -->
+<section class="install c-paper" id="instalar" aria-labelledby="in-t">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="d2 split" id="in-t">Cómo abrirlo</h2>
+      <p class="lead txt-2 rv">Cinco pasos, menos de un minuto. Las ventanas son ilustraciones de Windows 11.</p>
+    </div>
+    <ol class="how">
+      <li class="hw rv">
+        <div class="scr" aria-hidden="true">
+          <div class="win browser"><div class="bar"><i></i><i></i><i></i><span class="url">ametsip1234.github.io/dreams-studio</span></div>
+            <div class="body center"><span class="fake-btn">Descargar gratis ↓</span>
+              <div class="dlpop"><b>Descargas</b><span><i class="ico zip"></i>Liminal8.zip</span><em>270 MB · Completado</em></div></div></div>
+          <span class="cursor" style="left:44%;top:56%"><svg><use href="#cur"/></svg><i class="click"></i></span>
+        </div>
+        <div class="hw-t"><span class="hw-n">1</span><h3>Pulsa «Descargar gratis»</h3><p>Se descarga <b>Liminal8.zip</b> en tu carpeta Descargas.</p></div>
+      </li>
+      <li class="hw rv" style="--d:80ms">
+        <div class="scr" aria-hidden="true">
+          <div class="win"><div class="bar"><span class="ttl"><i class="ico fold"></i>Descargas</span><i></i><i></i><i></i></div>
+            <div class="body ex"><ul class="side"><li>Inicio</li><li>Escritorio</li><li class="on">Descargas</li><li>Documentos</li></ul>
+              <ul class="files"><li class="sel"><i class="ico zip"></i>Liminal8.zip<em>Carpeta comprimida</em></li><li><i class="ico fold"></i>Fotos<em>Carpeta</em></li></ul></div></div>
+          <span class="cursor" style="left:62%;top:34%"><svg><use href="#cur"/></svg><i class="click"></i><b class="x2">×2</b></span>
+        </div>
+        <div class="hw-t"><span class="hw-n">2</span><h3>Doble clic en el zip</h3><p>Abre la carpeta Descargas y haz doble clic en <b>Liminal8.zip</b>.</p></div>
+      </li>
+      <li class="hw rv" style="--d:160ms">
+        <div class="scr" aria-hidden="true">
+          <div class="win"><div class="bar"><span class="ttl"><i class="ico zip"></i>Liminal8.zip</span><i></i><i></i><i></i></div>
+            <div class="tools"><span>Nuevo</span><span>Ver</span><span class="hl">Extraer todo</span></div>
+            <div class="body ex"><ul class="files wide"><li><i class="ico fold"></i>Liminal8<em>Carpeta de archivos</em></li></ul></div></div>
+          <span class="cursor" style="left:74%;top:30%"><svg><use href="#cur"/></svg><i class="click"></i></span>
+        </div>
+        <div class="hw-t"><span class="hw-n">3</span><h3>Pulsa «Extraer todo»</h3><p>Está arriba, en la barra de la ventana.</p></div>
+      </li>
+      <li class="hw rv" style="--d:240ms">
+        <div class="scr" aria-hidden="true">
+          <div class="win dlg"><div class="bar"><span class="ttl">Extraer carpetas comprimidas</span><i></i></div>
+            <div class="body"><p class="dt">Los archivos se extraerán en esta carpeta:</p><span class="path">C:\Users\Tú\Downloads\Liminal8</span>
+              <p class="chk"><i></i>Mostrar los archivos extraídos al finalizar</p><div class="dlg-b"><span class="hl">Extraer</span><span>Cancelar</span></div></div></div>
+          <span class="cursor" style="left:62%;top:78%"><svg><use href="#cur"/></svg><i class="click"></i></span>
+        </div>
+        <div class="hw-t"><span class="hw-n">4</span><h3>Pulsa «Extraer»</h3><p>Deja la carpeta que viene puesta. Al terminar se abre sola.</p></div>
+      </li>
+      <li class="hw rv" style="--d:320ms">
+        <div class="scr" aria-hidden="true">
+          <div class="win"><div class="bar"><span class="ttl"><i class="ico fold"></i>Liminal8</span><i></i><i></i><i></i></div>
+            <div class="body ex"><ul class="files wide"><li><i class="ico fold"></i>D3D12</li><li><i class="ico fold"></i>Liminal 8_Data</li><li><i class="ico fold"></i>MonoBleedingEdge</li><li class="sel"><img src="img/icon-48.png" width="16" height="16" alt="" loading="lazy">Liminal 8.exe<em>Aplicación</em></li><li><i class="ico dll"></i>UnityPlayer.dll</li></ul></div></div>
+          <span class="cursor" style="left:56%;top:73%"><svg><use href="#cur"/></svg><i class="click"></i><b class="x2">×2</b></span>
+        </div>
+        <div class="hw-t"><span class="hw-n">5</span><h3>Doble clic en «Liminal 8.exe»</h3><p>Si ves otra carpeta <b>Liminal8</b> dentro, entra en ella primero. Y a jugar.</p></div>
+      </li>
+    </ol>
+    <div class="how-notes rv">
+      <p><b>¿Sale «Windows protegió su PC»?</b> Pulsa «Más información» y después «Ejecutar de todas formas». Pasa con los juegos independientes que no están en una tienda.</p>
+      <p><b>¿Vas a jugar online?</b> Abre Steam antes de abrir el juego.</p>
     </div>
   </div>
 </section>
